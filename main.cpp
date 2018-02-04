@@ -362,7 +362,7 @@ static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("send.goldlineit.orf", 50050), true);
+    db.Add(CService("send.goldlineit.org", 50050), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
