@@ -356,13 +356,14 @@ extern "C" void* ThreadStats(void*) {
   } while(1);
 }
 
-static const string mainnet_seeds[] = {"send.goldlineit.org", "sendseed.goldlineit.org", ""};
+static const string mainnet_seeds[] = {"seed.send.goldlineit.org", ""};
 static const string testnet_seeds[] = {"", "", ""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("send.goldlineit.org", 50050), true);
+    db.Add(CService("45.63.106.237", 50050), true);
+    db.Add(CService("104.207.145.22", 50050), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
