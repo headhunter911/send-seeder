@@ -356,7 +356,7 @@ extern "C" void* ThreadStats(void*) {
   } while(1);
 }
 
-static const string mainnet_seeds[] = {"sendseed.goldlineit.org", "send.goldlineit.org", "seed.send.goldlineit.org", ""};
+static const string mainnet_seeds[] = {"78.8.60.138", "35.182.174.145", "104.131.187.251", "107.178.111.14", ""};
 static const string testnet_seeds[] = {"", "", ""};
 static const string *seeds = mainnet_seeds;
 
