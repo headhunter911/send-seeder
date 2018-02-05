@@ -60,3 +60,7 @@ $ iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-port 5353
 
 If properly configured, this will allow you to run dnsseed in userspace, using
 the -p 5353 option.
+
+To run in background after the iptable changes use:
+
+./dnsseed -h seed.yourdomain.com -n your.nameserver.com -m your.email.com -p 5353 > outputfile_for_stdout &
