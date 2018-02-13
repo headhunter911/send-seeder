@@ -1,9 +1,9 @@
 [Unit]
-Description=Bitcoin Seeder
+Description=Send Seeder
 After=network.target
 
 [Service]
-ExecStart=/usr/local/bin/dnsseed -h dnsseed.example.com -n vps.example.com -m satoshin.gmx.com
+ExecStart=/usr/local/bin/dnsseed -h seed.send.goldlineit.org -n send.goldlineit.org -m smyers.goldlineit.org -p 5353
 User=root
 Group=root
 
