@@ -24,8 +24,11 @@ install:
 	mkdir -p /usr/local/share/dnsseed
 	chmod 766 -R /usr/local/share/dnsseed
 	cp dnsseed $(DESTDIR)$(PREFIX)/bin
+	cp init/send-seeder.service /etc/systemd/system/send-seeder.service
 
 .PHONY: uninstall
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/dnsseed
 	rm -f /usr/local/share/dnsseed
+	systemctl disable send-seeder
+	rm -f /etc/systemd/system/send-seeder.service
