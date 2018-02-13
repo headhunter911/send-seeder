@@ -37,3 +37,4 @@ uninstall:
 	systemctl disable send-seeder
 	rm -f /etc/systemd/system/send-seeder.service
 	iptables -t nat -D PREROUTING -p udp --dport 53 -j REDIRECT --to-port 5353
+	deluser dnsseed
