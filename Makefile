@@ -20,9 +20,11 @@ PREFIX = /usr/local
 
 .PHONY: install
 install:
+	useradd -r -s /sbin/nologin dnsseed
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	mkdir -p /usr/local/share/dnsseed
 	chmod 766 -R /usr/local/share/dnsseed
+	chown dnsseed:dnsseed -R /usr/local/share/dnsseed
 	cp dnsseed $(DESTDIR)$(PREFIX)/bin
 	cp init/send-seeder.service /etc/systemd/system/send-seeder.service
 	iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-port 5353
