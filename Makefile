@@ -28,6 +28,7 @@ install:
 	cp dnsseed $(DESTDIR)$(PREFIX)/bin
 	cp init/send-seeder.service /etc/systemd/system/send-seeder.service
 	iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-port 5353
+	systemctl enable send-seeder
 
 .PHONY: uninstall
 uninstall:
