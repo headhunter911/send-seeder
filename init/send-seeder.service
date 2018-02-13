@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 ExecStart=/usr/local/bin/dnsseed -h seed.send.goldlineit.org -n send.goldlineit.org -m smyers.goldlineit.org -p 5353
-User=root
-Group=root
+User=dnsseed
+Group=dnsseed
 
 Restart=on-failure
 PrivateTmp=true
