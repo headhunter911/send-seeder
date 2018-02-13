@@ -33,7 +33,7 @@ install:
 .PHONY: uninstall
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/dnsseed
-	rm -f /usr/local/share/dnsseed
+	rm -R /usr/local/share/dnsseed
 	systemctl disable send-seeder
 	rm -f /etc/systemd/system/send-seeder.service
 	iptables -t nat -D PREROUTING -p udp --dport 53 -j REDIRECT --to-port 5353
