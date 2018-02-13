@@ -300,15 +300,15 @@ extern "C" void* ThreadDumper(void*) {
     {
       vector<CAddrReport> v = db.GetAll();
       sort(v.begin(), v.end(), StatCompare);
-      FILE *f = fopen("dnsseed.dat.new","w+");
+      FILE *f = fopen("/usr/local/share/dnsseed/dnsseed.dat.new","w+");
       if (f) {
         {
           CAutoFile cf(f);
           cf << db;
         }
-        rename("dnsseed.dat.new", "dnsseed.dat");
+        rename("/usr/local/share/dnsseed/dnsseed.dat.new", "/usr/local/share/dnsseed/dnsseed.dat");
       }
-      FILE *d = fopen("dnsseed.dump", "w");
+      FILE *d = fopen("/usr/local/share/dnsseed/dnsseed.dump", "w");
       fprintf(d, "# address                                        good  lastSuccess    %%(2h)   %%(8h)   %%(1d)   %%(7d)  %%(30d)  blocks      svcs  version\n");
       double stat[5]={0,0,0,0,0};
       for (vector<CAddrReport>::const_iterator it = v.begin(); it < v.end(); it++) {
@@ -321,7 +321,7 @@ extern "C" void* ThreadDumper(void*) {
         stat[4] += rep.uptime[4];
       }
       fclose(d);
-      FILE *ff = fopen("dnsstats.log", "a");
+      FILE *ff = fopen("usr/local/share/dnsseed/dnsstats.log", "a");
       fprintf(ff, "%llu %g %g %g %g %g\n", (unsigned long long)(time(NULL)), stat[0], stat[1], stat[2], stat[3], stat[4]);
       fclose(ff);
     }
@@ -424,7 +424,7 @@ int main(int argc, char **argv) {
     fprintf(stderr, "No e-mail address set. Please use -m.\n");
     exit(1);
   }
-  FILE *f = fopen("dnsseed.dat","r");
+  FILE *f = fopen("usr/local/share/dnsseed/dnsseed.dat","r");
   if (f) {
     printf("Loading dnsseed.dat...");
     CAutoFile cf(f);
