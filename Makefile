@@ -21,8 +21,11 @@ PREFIX = /usr/local
 .PHONY: install
 install:
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
+	mkdir -p /usr/local/share/dnsseed
+	chmod 766 -R /usr/local/share/dnsseed
 	cp dnsseed $(DESTDIR)$(PREFIX)/bin
 
 .PHONY: uninstall
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/dnsseed
+	rm -f /usr/local/share/dnsseed
